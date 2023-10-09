@@ -1,4 +1,5 @@
 import { BigInt } from "@hyperoracle/zkgraph-lib";
+import { balances, principals } from "./marine";
 
 export class Configs {
   public userAddress: string = "";
@@ -95,15 +96,9 @@ export class Configs {
     false,
     false,
   ];
-  public balances: i64[] = [
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1000000000000000000, 0,
-    0, 0,
-  ];
-  public principals: i64[] = [
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 567107750472589, 0, 0,
-    0, 0,
-  ];
-  // alice stake 1 USDC and borrow 0.000628 ETH
+  public balances: i64[] = balances;
+  public principals: i64[] = principals;
+
   public balanceCaresPairAddress: string[] = [];
   public principalCaresPairAddress: string[] = [];
 
