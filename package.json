@@ -1,7 +1,7 @@
 {
   "name": "zkcompound",
   "version": "1.0.0",
-  "description": "",
+  "description": "Compound Liquidator based on zkGraph",
   "main": "index.js",
   "scripts": {
     "compile-local": "node api/compile.js",
