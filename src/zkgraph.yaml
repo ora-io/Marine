@@ -1,0 +1,384 @@
+specVersion: 0.0.2
+description: Compound Asset Watcher
+repository: https://github.com/hyperoracle/zkgraph
+dataSources:
+  - kind: ethereum/contract
+    network: mainnet
+    source:
+      address: '0x6F81d90E771B551451382b4c8B41C86B978d3420'
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.1
+      language: wasm/assemblyscript
+      file: ./mapping.ts
+      eventHandlers:
+        - event: "Sync(uint112,uint112)"
+          handler: handleEvents
+        - event: "Mint(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "Borrow(address,uint256,uint256,uint256)"
+          handler: handleEvents
+        - event: "Redeem(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "RepayBorrow(address,address,uint256,uint256,uint256)"
+          handler: handleEvents
+  - kind: ethereum/contract
+    network: mainnet
+    source:
+      address: '0xf1f27Db872b7F6E8B873C97F785fe4f9a6C92161'
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.1
+      language: wasm/assemblyscript
+      file: ./mapping.ts
+      eventHandlers:
+        - event: "Sync(uint112,uint112)"
+          handler: handleEvents
+        - event: "Mint(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "Borrow(address,uint256,uint256,uint256)"
+          handler: handleEvents
+        - event: "Redeem(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "RepayBorrow(address,address,uint256,uint256,uint256)"
+          handler: handleEvents
+  - kind: ethereum/contract
+    network: mainnet
+    source:
+      address: '0x674E114dAd81838d151d9BedA2271228eeAe0E8B'
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.1
+      language: wasm/assemblyscript
+      file: ./mapping.ts
+      eventHandlers:
+        - event: "Sync(uint112,uint112)"
+          handler: handleEvents
+        - event: "Mint(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "Borrow(address,uint256,uint256,uint256)"
+          handler: handleEvents
+        - event: "Redeem(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "RepayBorrow(address,address,uint256,uint256,uint256)"
+          handler: handleEvents
+  - kind: ethereum/contract
+    network: mainnet
+    source:
+      address: '0x40C6Bc1dB179a5c3D464Cac557AB890825C638F3'
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.1
+      language: wasm/assemblyscript
+      file: ./mapping.ts
+      eventHandlers:
+        - event: "Sync(uint112,uint112)"
+          handler: handleEvents
+        - event: "Mint(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "Borrow(address,uint256,uint256,uint256)"
+          handler: handleEvents
+        - event: "Redeem(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "RepayBorrow(address,address,uint256,uint256,uint256)"
+          handler: handleEvents
+  - kind: ethereum/contract
+    network: mainnet
+    source:
+      address: '0x9f65DF828d21C8860ee1499dA6397D50d85E14a0'
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.1
+      language: wasm/assemblyscript
+      file: ./mapping.ts
+      eventHandlers:
+        - event: "Sync(uint112,uint112)"
+          handler: handleEvents
+        - event: "Mint(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "Borrow(address,uint256,uint256,uint256)"
+          handler: handleEvents
+        - event: "Redeem(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "RepayBorrow(address,address,uint256,uint256,uint256)"
+          handler: handleEvents
+  - kind: ethereum/contract
+    network: mainnet
+    source:
+      address: '0x004375Dff511095CC5A197A54140a24eFEF3A416'
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.1
+      language: wasm/assemblyscript
+      file: ./mapping.ts
+      eventHandlers:
+        - event: "Sync(uint112,uint112)"
+          handler: handleEvents
+        - event: "Mint(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "Borrow(address,uint256,uint256,uint256)"
+          handler: handleEvents
+        - event: "Redeem(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "RepayBorrow(address,address,uint256,uint256,uint256)"
+          handler: handleEvents
+  - kind: ethereum/contract
+    network: mainnet
+    source:
+      address: '0x239650663A422273C0b2c7A1f1a8bdAb69E78D1B'
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.1
+      language: wasm/assemblyscript
+      file: ./mapping.ts
+      eventHandlers:
+        - event: "Sync(uint112,uint112)"
+          handler: handleEvents
+        - event: "Mint(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "Borrow(address,uint256,uint256,uint256)"
+          handler: handleEvents
+        - event: "Redeem(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "RepayBorrow(address,address,uint256,uint256,uint256)"
+          handler: handleEvents
+  - kind: ethereum/contract
+    network: mainnet
+    source:
+      address: '0x3139Ffc91B99aa94DA8A2dc13f1fC36F9BDc98eE'
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.1
+      language: wasm/assemblyscript
+      file: ./mapping.ts
+      eventHandlers:
+        - event: "Sync(uint112,uint112)"
+          handler: handleEvents
+        - event: "Mint(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "Borrow(address,uint256,uint256,uint256)"
+          handler: handleEvents
+        - event: "Redeem(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "RepayBorrow(address,address,uint256,uint256,uint256)"
+          handler: handleEvents
+  - kind: ethereum/contract
+    network: mainnet
+    source:
+      address: '0x3041CbD36888bECc7bbCBc0045E3B1f144466f5f'
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.1
+      language: wasm/assemblyscript
+      file: ./mapping.ts
+      eventHandlers:
+        - event: "Sync(uint112,uint112)"
+          handler: handleEvents
+        - event: "Mint(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "Borrow(address,uint256,uint256,uint256)"
+          handler: handleEvents
+        - event: "Redeem(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "RepayBorrow(address,address,uint256,uint256,uint256)"
+          handler: handleEvents
+
+  - kind: ethereum/contract
+    network: mainnet
+    source:
+      address: '0x004375Dff511095CC5A197A54140a24eFEF3A416'
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.1
+      language: wasm/assemblyscript
+      file: ./mapping.ts
+      eventHandlers:
+        - event: "Sync(uint112,uint112)"
+          handler: handleEvents
+        - event: "Mint(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "Borrow(address,uint256,uint256,uint256)"
+          handler: handleEvents
+        - event: "Redeem(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "RepayBorrow(address,address,uint256,uint256,uint256)"
+          handler: handleEvents
+  - kind: ethereum/contract
+    network: mainnet
+    source:
+      address: '0xd8C8a2B125527bf97c8e4845b25dE7e964468F77'
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.1
+      language: wasm/assemblyscript
+      file: ./mapping.ts
+      eventHandlers:
+        - event: "Sync(uint112,uint112)"
+          handler: handleEvents
+        - event: "Mint(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "Borrow(address,uint256,uint256,uint256)"
+          handler: handleEvents
+        - event: "Redeem(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "RepayBorrow(address,address,uint256,uint256,uint256)"
+          handler: handleEvents
+  - kind: ethereum/contract
+    network: mainnet
+    source:
+      address: '0xdE37cD310c70e7Fa9d7eD3261515B107D5Fe1F2d'
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.1
+      language: wasm/assemblyscript
+      file: ./mapping.ts
+      eventHandlers:
+        - event: "Sync(uint112,uint112)"
+          handler: handleEvents
+        - event: "Mint(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "Borrow(address,uint256,uint256,uint256)"
+          handler: handleEvents
+        - event: "Redeem(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "RepayBorrow(address,address,uint256,uint256,uint256)"
+          handler: handleEvents
+  - kind: ethereum/contract
+    network: mainnet
+    source:
+      address: '0x02DD9Ff64EeC5D866a512EF08463C7c85A14e4Aa'
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.1
+      language: wasm/assemblyscript
+      file: ./mapping.ts
+      eventHandlers:
+        - event: "Sync(uint112,uint112)"
+          handler: handleEvents
+        - event: "Mint(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "Borrow(address,uint256,uint256,uint256)"
+          handler: handleEvents
+        - event: "Redeem(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "RepayBorrow(address,address,uint256,uint256,uint256)"
+          handler: handleEvents
+  - kind: ethereum/contract
+    network: mainnet
+    source:
+      address: '0xAE461cA67B15dc8dc81CE7615e0320dA1A9aB8D5'
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.1
+      language: wasm/assemblyscript
+      file: ./mapping.ts
+      eventHandlers:
+        - event: "Sync(uint112,uint112)"
+          handler: handleEvents
+        - event: "Mint(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "Borrow(address,uint256,uint256,uint256)"
+          handler: handleEvents
+        - event: "Redeem(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "RepayBorrow(address,address,uint256,uint256,uint256)"
+          handler: handleEvents
+  - kind: ethereum/contract
+    network: mainnet
+    source:
+      address: '0xb4e16d0168e52d35cacd2c6185b44281ec28c9dc'
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.1
+      language: wasm/assemblyscript
+      file: ./mapping.ts
+      eventHandlers:
+        - event: "Sync(uint112,uint112)"
+          handler: handleEvents
+        - event: "Mint(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "Borrow(address,uint256,uint256,uint256)"
+          handler: handleEvents
+        - event: "Redeem(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "RepayBorrow(address,address,uint256,uint256,uint256)"
+          handler: handleEvents
+  - kind: ethereum/contract
+    network: mainnet
+    source:
+      address: '0x004375Dff511095CC5A197A54140a24eFEF3A416'
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.1
+      language: wasm/assemblyscript
+      file: ./mapping.ts
+      eventHandlers:
+        - event: "Sync(uint112,uint112)"
+          handler: handleEvents
+        - event: "Mint(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "Borrow(address,uint256,uint256,uint256)"
+          handler: handleEvents
+        - event: "Redeem(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "RepayBorrow(address,address,uint256,uint256,uint256)"
+          handler: handleEvents
+  - kind: ethereum/contract
+    network: mainnet
+    source:
+      address: '0xEBFb684dD2b01E698ca6c14F10e4f289934a54D6'
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.1
+      language: wasm/assemblyscript
+      file: ./mapping.ts
+      eventHandlers:
+        - event: "Sync(uint112,uint112)"
+          handler: handleEvents
+        - event: "Mint(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "Borrow(address,uint256,uint256,uint256)"
+          handler: handleEvents
+        - event: "Redeem(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "RepayBorrow(address,address,uint256,uint256,uint256)"
+          handler: handleEvents
+  - kind: ethereum/contract
+    network: mainnet
+    source:
+      address: '0x340A5a2F73eBaa181eC2826802Fdf8ED21Fc759a'
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.1
+      language: wasm/assemblyscript
+      file: ./mapping.ts
+      eventHandlers:
+        - event: "Sync(uint112,uint112)"
+          handler: handleEvents
+        - event: "Mint(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "Borrow(address,uint256,uint256,uint256)"
+          handler: handleEvents
+        - event: "Redeem(address,uint256,uint256)"
+          handler: handleEvents
+        - event: "RepayBorrow(address,address,uint256,uint256,uint256)"
+          handler: handleEvents
+  - kind: ethereum/contract
+    network: mainnet
+    source:
+      address: '0x3d9819210A31b4961b30EF54bE2aeD79B9c9Cd3B'
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.1
+      language: wasm/assemblyscript
+      file: ./mapping.ts
+      eventHandlers:
+        - event: "NewCloseFactor(uint256,uint256)"
+          handler: handleEvents
+        - event: "NewCollateralFactor(address,uint256,uint256)"
+          handler: handleEvents
+dataDestinations:
+  - kind: ethereum/contract
+    network: sepolia
+    destination:
+      address: '0x0000000000000000000000000000000000000000'
