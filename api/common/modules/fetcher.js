@@ -27,7 +27,7 @@ export class MarineFatcher {
         balance: snapshot[1].toString(),
         principal: snapshot[2].toString()
       }
-      console.log(marketAddress[i])
+      console.log('Fetching state of market ' + marketAddress[i])
     }
     const resultString = JSON.stringify(result)
     await fs.writeFile(filePath, resultString)
