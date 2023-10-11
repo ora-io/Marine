@@ -1,8 +1,6 @@
 {
   "name": "zkcompound",
-  "version": "1.0.0",
   "description": "Compound Liquidator based on zkGraph",
-  "main": "index.js",
   "scripts": {
     "compile-local": "node api/compile.js",
     "setup-local": "node api/setup.js",
@@ -21,9 +19,7 @@
     "format": "prettier --write -c **/*.{js,ts,md}",
     "lint": "prettier -c **/*.{js,ts,md}"
   },
-  "author": "LiRiu",
   "type": "module",
-  "license": "ISC",
   "dependencies": {
     "@hyperoracle/zkgraph-api": "^0.1.2",
     "@hyperoracle/zkgraph-lib": "^0.0.7",
