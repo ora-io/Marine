@@ -16,8 +16,8 @@ export const BORROW_ESIG = "0x13ed6866d4e1ee6da46f845c46d7e54120883d75c5ea9a2dac
 export const REPAY_BORROW_ESIG = "0x1a2a22cb034d26d1854bdc6666a5b91fe25efbbb5dcad3b0355478d6f5c362a1";
 export const SYNC_ESIG = "0x1c411e9a96e071241c2f21f7726b17ae89e3cab4c78be50e062b03a9fffbbad1";
 
-export const MINT_ESIG_U32: u32 = BigInt.fromString(MINT_ESIG).toU32();
-export const REDEEM_ESIG_U32: u32 = BigInt.fromString(REDEEM_ESIG).toU32();
-export const BORROW_ESIG_U32: u32 = BigInt.fromString(BORROW_ESIG).toU32();
-export const REPAY_BORROW_ESIG_U32: u32 = BigInt.fromString(REPAY_BORROW_ESIG).toU32();
-export const SYNC_ESIG_U32: u32 = BigInt.fromString(SYNC_ESIG).toU32();
+export const MINT_ESIG_U32: u32 = BigInt.fromString(MINT_ESIG.slice(0,8)).toU32();
+export const REDEEM_ESIG_U32: u32 = BigInt.fromString(REDEEM_ESIG.slice(0,8)).toU32();
+export const BORROW_ESIG_U32: u32 = BigInt.fromString(BORROW_ESIG.slice(0,8)).toU32();
+export const REPAY_BORROW_ESIG_U32: u32 = BigInt.fromString(REPAY_BORROW_ESIG.slice(0,8)).toU32();
+export const SYNC_ESIG_U32: u32 = BigInt.fromString(SYNC_ESIG.slice(0,8)).toU32();
