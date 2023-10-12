@@ -1,5 +1,6 @@
-specVersion: 0.0.2
-description: Compound Asset Watcher
+specVersion: 0.0.1
+name: zkCompound
+description: "Compound Asset Watcher"
 repository: https://github.com/hyperoracle/zkgraph
 dataSources:
   - kind: ethereum/contract
@@ -381,4 +382,4 @@ dataDestinations:
   - kind: ethereum/contract
     network: sepolia
     destination:
-      address: '0x0000000000000000000000000000000000000000'
+      address: '0x0000000000000000000000000000000000000001'
