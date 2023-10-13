@@ -36,6 +36,6 @@ export function handleEvents(events: Event[]): Bytes {
   const totalPrincipal = calculateTotalPrincipal(configs, events);
 
   // // step4: return totalValue <= totalPrincipal
-  const resultInt = totalValue <= totalPrincipal ? 1 : 0;
+  const resultInt = totalValue < totalPrincipal ? 1 : 0;
   return Bytes.fromI32(resultInt);
 }

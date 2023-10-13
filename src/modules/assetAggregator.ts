@@ -13,7 +13,7 @@ export function calculateTotalValue(configs: Configs, events: Event[], collatera
     }
     const address = Bytes.fromByteArray(event.address).toHexString();
     // TODO: balanceCaresPairAddress should be a array...
-    if (configs.balanceCaresPairAddress.toString() == address) {
+    if (configs.balanceCaresPairAddress.includes(address)) {
       const decimals = configs.getDecimalsByAddress(address);
       const isToken0 = configs.getIsToken0ByAddress(address);
       const balance = configs.getBalanceByAddress(address);
@@ -41,7 +41,7 @@ export function calculateTotalPrincipal(configs: Configs, events: Event[]): BigI
       }
       const address = Bytes.fromByteArray(event.address).toHexString();
       // TODO: principalCaresPairAddress should be a array...
-      if (configs.principalCaresPairAddress.toString() == address) {
+      if (configs.principalCaresPairAddress.includes(address)) {
         const decimals = configs.getDecimalsByAddress(address);
         const isToken0 = configs.getIsToken0ByAddress(address);
         const principal = configs.getPrincipalByAddress(address);

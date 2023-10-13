@@ -22,7 +22,13 @@ export class MarineFatcher {
     const result = {}
     for (let i = 0; i < marketAddress.length; i++) {
       const Market = new web3.eth.Contract(cTokenAbi, marketAddress[i])
-      const snapshot = await Market.methods.getAccountSnapshot(this.marine).call()
+      let snapshot;
+      try {
+        snapshot = await Market.methods.getAccountSnapshot(this.marine).call()
+      } catch {
+        snapshot = [0, 0, 0]
+      }
+      
       result[marketAddress[i]] = {
         balance: snapshot[1].toString(),
         principal: snapshot[2].toString()
