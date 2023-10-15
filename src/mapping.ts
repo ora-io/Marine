@@ -8,7 +8,7 @@ import {
   updateConfigWithEvent
 } from "./modules/configUpdater";
 import { updateCloseFactor, updateCollateralFactor } from "./modules/factorUpdater";
-import { calculateTotalValue, calculateTotalPrincipal } from "./modules/assetAggregator";
+import { calculateTotalValue, calculateTotalPrincipal, updatePrices } from "./modules/assetAggregator";
 
 /**
  * The idea of Compound Liquidator Automation is to monitor three types of events, 
@@ -23,7 +23,7 @@ export function handleEvents(events: Event[]): Bytes {
   // step1: If there is a NewCloseFactor or NewCollateralFactor event 
   // override the hardcoded Factor.
   let closeFactor = updateCloseFactor(events);
-  let collateralFactor = updateCollateralFactor(events);
+  updateCollateralFactor(configs, events);
   
   // step2: Update Balance and Principal by processing Mint Redeem Borrow Repay
   // Mint make balance +; Redeem make balance -
@@ -32,10 +32,13 @@ export function handleEvents(events: Event[]): Bytes {
 
   // // step3: calculate totalValue and totalPrincipal
   // // totalValue += balance * price * COLLATERAL_FACTOR
-  const totalValue = calculateTotalValue(configs, events, collateralFactor);
-  const totalPrincipal = calculateTotalPrincipal(configs, events);
+  updatePrices(configs, events);
+  const totalValue = calculateTotalValue(configs);
+  const totalPrincipal = calculateTotalPrincipal(configs);
+  console.log(totalValue.toHexString());
+  console.log(totalPrincipal.toHexString());
 
   // // step4: return totalValue <= totalPrincipal
-  const resultInt = totalValue < totalPrincipal ? 1 : 0;
-  return Bytes.fromI32(resultInt);
+  const shouldBeLiquidated = totalValue < totalPrincipal ? 1 : 0;
+  return Bytes.fromI32(shouldBeLiquidated);
 }

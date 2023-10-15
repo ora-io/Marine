@@ -17,6 +17,7 @@
     "verify": "node api/verify.js",
     "publish": "node api/publish.js",
     "marine": "node api/marine.js",
+    "prices": "node api/prices.js",
     "format": "prettier --write -c **/*.{js,ts,md}",
     "lint": "prettier -c **/*.{js,ts,md}"
   },
