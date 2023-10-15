@@ -1,5 +1,6 @@
 import { BigInt } from "@hyperoracle/zkgraph-lib";
 import { balances, principals } from "./marine";
+import { prices } from "./price";
 
 export class Configs {
   public userAddress: string = "";
@@ -26,7 +27,8 @@ export class Configs {
     "0x35A18000230DA775CAc24873d00Ff85BccdeD550",
     "0x95b4eF2869eBD94BEb4eEE400a99824BF5DC325b",
   ];
-  public decimals: i32[] = [18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18, 18];
+  public collateralFactors: i64[] = [600000000000000000,0,730000000000000000,0,0,650000000000000000,700000000000000000,670000000000000000,0,0,0,700000000000000000,790000000000000000,750000000000000000,600000000000000000,835000000000000000,825000000000000000,855000000000000000,600000000000000000,750000000000000000,730000000000000000];
+  public decimals: i32[] = [18, 18, 18, 18, 18, 18, 8, 18, 18, 6, 18, 8, 18, 18, 18, 18, 18, 18, 8, 18, 18];
   public underlyings: string[] = [
     "0xc00e94Cb662C3520282E6f5717214004A7f26888",
     "0x0000000000085d4780B73119b644AE5ecd22b376",
@@ -98,6 +100,7 @@ export class Configs {
   ];
   public balances: i64[] = balances;
   public principals: i64[] = principals;
+  public prices: i64[] = prices;
 
   public balanceCaresPairAddress: string[] = [];
   public principalCaresPairAddress: string[] = [];
@@ -157,5 +160,17 @@ export class Configs {
     if (!this.marketAddresses.includes(marketAddresses)) return;
     let index = this.marketAddresses.indexOf(marketAddresses);
     this.principals[index] = principal.toI64();
+  }
+
+  public setPricesByPair(pairAddresses: string, price: i64): void {
+    if (!this.pairAddresses.includes(pairAddresses)) return;
+    let index = this.pairAddresses.indexOf(pairAddresses);
+    this.prices[index] = price;
+  }
+
+  public setCollateralFactorByPair(pairAddresses: string, collateralFactor: i64): void {
+    if (!this.pairAddresses.includes(pairAddresses)) return;
+    let index = this.pairAddresses.indexOf(pairAddresses);
+    this.collateralFactors[index] = collateralFactor;
   }
 }
