@@ -23,11 +23,22 @@ export function calculateTotalValue(configs: Configs): BigInt {
   let totalValue: BigInt = BigInt.zero();
   for (let i = 0; i < configs.balances.length - 1; i++) {
     const balance = BigInt.from(configs.balances[i]).times(BALANCE_PRINCIPAL_DECIMAL);
-    const price = BigInt.from(configs.prices[i]);
-    const value = BigInt.from(balance).times(price);
+    const price = BigInt.from(configs.prices[i]).times(2).div(100);
     const collateralFactor = configs.collateralFactors[i];
-    const valueAfterFactor = value.div(ONE_FACTOR).times(collateralFactor).div(PRICE_DECIMAL);
-    totalValue = totalValue.add(valueAfterFactor);
+    const decimal = configs.decimals[i];
+    if(decimal > 10){
+      const valueAfterDecimal = balance.div(10**(decimal - 10)).toI64();
+      const amounte10 = BigInt.from(valueAfterDecimal).times(price).div(PRICE_DECIMAL).toI64();
+      const amounte5 = BigInt.from(amounte10).div(10**5).toI64();
+      const amount = BigInt.from(amounte5).div(10**5);
+      const amountAfterFactor = amount.times(collateralFactor).div(ONE_FACTOR);
+      totalValue = totalValue.add(amountAfterFactor);
+    } else {
+      const valueAfterDecimal = balance.div(10**decimal).toI64();
+      const amount = BigInt.from(valueAfterDecimal).times(price).div(PRICE_DECIMAL);
+      const amountAfterFactor = amount.times(collateralFactor).div(ONE_FACTOR);
+      totalValue = totalValue.add(amountAfterFactor);
+    }
   }
   return totalValue;
 }
@@ -35,10 +46,20 @@ export function calculateTotalValue(configs: Configs): BigInt {
 export function calculateTotalPrincipal(configs: Configs): BigInt {
     let totalPrincipal: BigInt = BigInt.zero();
     for (let i = 0; i < configs.principals.length - 1; i++) {
-      const principal = BigInt.from(configs.principals[i]).times(BALANCE_PRINCIPAL_DECIMAL);
       const price = BigInt.from(configs.prices[i]);
-      const amount = BigInt.from(principal).div(PRICE_DECIMAL).times(price);
-      totalPrincipal = totalPrincipal.add(amount);
+      const principal = BigInt.from(configs.principals[i]).times(BALANCE_PRINCIPAL_DECIMAL);
+      const decimal = configs.decimals[i];
+      if(decimal > 10){
+        const principalAfterDecimal = principal.div(10**(decimal - 10)).toI64();
+        const amounte10 = BigInt.from(principalAfterDecimal).times(price).div(PRICE_DECIMAL).toI64();
+        const amounte5 = BigInt.from(amounte10).div(10**5).toI64();
+        const amount = BigInt.from(amounte5).div(10**5).toI64();
+        totalPrincipal = totalPrincipal.add(amount);
+      } else {
+        const principalAfterDecimal = principal.div(10**decimal).toI64();
+        const amount = BigInt.from(principalAfterDecimal).times(price).div(PRICE_DECIMAL);
+        totalPrincipal = totalPrincipal.add(amount);
+      }
     }
     return totalPrincipal;
   }

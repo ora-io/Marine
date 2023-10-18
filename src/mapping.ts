@@ -35,8 +35,8 @@ export function handleEvents(events: Event[]): Bytes {
   updatePrices(configs, events);
   const totalValue = calculateTotalValue(configs);
   const totalPrincipal = calculateTotalPrincipal(configs);
-  console.log(totalValue.toHexString());
-  console.log(totalPrincipal.toHexString());
+  console.log("total value: " + totalValue.toString() + "U");
+  console.log("total principal: " + totalPrincipal.toString() + "U");
 
   // // step4: return totalValue <= totalPrincipal
   const shouldBeLiquidated = totalValue < totalPrincipal ? 1 : 0;

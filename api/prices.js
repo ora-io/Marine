@@ -39,6 +39,7 @@ async function main() {
       console.log(pA, price);
     }
   }
+  prices.splice(11,1);
 
   const result = 'export const prices: i64[] = ' + JSON.stringify(prices);
   await fs.writeFile('src/static/price.ts', result + '\n');
