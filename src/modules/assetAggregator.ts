@@ -27,9 +27,9 @@ export function calculateTotalValue(configs: Configs): BigInt {
     const collateralFactor = configs.collateralFactors[i];
     const decimal = CTOKEN_DECIMAL;
 
-    const valueAfterDecimal = balance.div(10**decimal).toI64();
-    const amount = BigInt.from(valueAfterDecimal).times(price).div(PRICE_DECIMAL);
-    const amountAfterFactor = amount.times(collateralFactor).div(ONE_FACTOR);
+    const amountBeforeDecimal = BigInt.from(balance).times(price).div(PRICE_DECIMAL);
+    const amount = amountBeforeDecimal.div(10**decimal).toI64();
+    const amountAfterFactor = BigInt.from(amount).times(collateralFactor).div(ONE_FACTOR);
     totalValue = totalValue.add(amountAfterFactor);
   }
   return totalValue;
