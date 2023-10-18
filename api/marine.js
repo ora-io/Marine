@@ -1,5 +1,4 @@
 import { program } from "commander";
-import { logDivider } from "./common/log_utils.js";
 
 import { MarineFatcher } from './common/modules/fetcher.js';
 import { MarineProcessor } from './common/modules/processor.js';
@@ -12,15 +11,12 @@ program.argument(
 );
 program.parse(process.argv);
 const marine = program.args[0];
-async function main () {
+export async function updateMarine (marineAddress) {
   console.log(">> MARINE", "\n");
-  const fetcher = new MarineFatcher(marine)
+  const fetcher = new MarineFatcher(marineAddress)
   await fetcher.run()
-  const processor = new MarineProcessor(marine)
+  const processor = new MarineProcessor(marineAddress)
   processor.run()
-
-  logDivider();
-  process.exit(0);
 }
 
-main()
+updateMarine(marine)

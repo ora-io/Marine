@@ -24,13 +24,17 @@ function calcPrice(data, usdcIsToken0, token1Decimals) {
   }
 }
 
-async function main() {
+export async function updatePrices() {
   const prices = [];
   for ( let i = 0; i < pairAddresses.length; i++) {
     const pA = pairAddresses[i];
     const isNoPair = pA.startsWith('0x00000000000000000000000000000000000000');
     if (isNoPair) {
-      prices.push(0);
+      if (pA == '0x0000000000000000000000000000000000000000') {
+        prices.push(1 * PRICE_DECIMAL);
+      } else {
+        prices.push(0);
+      }
     } else {
       const Pair = new web3.eth.Contract(pairAbi, pA);
       const result = await Pair.methods.getReserves().call();
@@ -45,4 +49,4 @@ async function main() {
   await fs.writeFile('src/static/price.ts', result + '\n');
 }
 
-main();
+updatePrices();
