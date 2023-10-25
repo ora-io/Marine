@@ -60,3 +60,7 @@ You can modify the address `0x77C6d4c010EaeF7C0dC0080F78ded522AB58A926` and bloc
 5. There are precision issues in the calculations of balances and principals, and the usage of BigInt needs to be improved.
 
 6. modify `configs` into `positions`
+
+7. src/static Decoupling
+
+8. developer scripts merge into main branch
