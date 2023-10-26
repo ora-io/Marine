@@ -14,6 +14,9 @@ export class MarineFatcher {
   }
 
   run = async () => {
+    if (!fss.existsSync(resultOutputPath)){
+      fss.mkdirSync(resultOutputPath);
+    }
     const filePath = resultOutputPath + this.marine + '.json'
     if (fss.existsSync(filePath)) {
       console.log('marine ' + this.marine + ' already exists')
