@@ -8,7 +8,7 @@ console.log(">> COMPILE", "\n");
 
 // check if marine.ts and prices.ts is exist
 if (!fs.existsSync("src/static/marine.ts") || !fs.existsSync("src/static/price.ts")) {
-  console.log("[-] src/mapping.ts not found. You should run \`npm run marine -- 0xABC... and npm run prices first.\`", "\n");
+  console.log("[-] src/static/marine.ts or src/static/price.ts not found.\n You should run \`npm run marine -- 0xABC... and npm run prices first.\`", "\n");
   logDivider();
   process.exit(1);
 }
