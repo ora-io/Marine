@@ -1,9 +1,17 @@
 import { currentNpmScriptName, logDivider } from "./common/log_utils.js";
 import { config } from "../config.js";
 import * as zkgapi from "@hyperoracle/zkgraph-api";
+import fs from "fs";
 
 // Log script name
 console.log(">> COMPILE", "\n");
+
+// check if marine.ts and prices.ts is exist
+if (!fs.existsSync("src/static/marine.ts") || !fs.existsSync("src/static/price.ts")) {
+  console.log("[-] src/mapping.ts not found. You should run \`npm run marine -- 0xABC... and npm run prices first.\`", "\n");
+  logDivider();
+  process.exit(1);
+}
 
 if (currentNpmScriptName() === "compile-local") {
   // Compile Locally

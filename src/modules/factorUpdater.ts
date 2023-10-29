@@ -22,7 +22,7 @@ export function updateCollateralFactor(configs: Configs, events: Event[]): void 
       const newCollateralFactor = NewCollateralFactor.fromEvent(events[i]);
       collateralFactor = newCollateralFactor.newCollateralFactorMantissa;
       const pairAddress = events[i].address;
-      console.log("pairAddress " + pairAddress.toHexString());
+      // console.log("pairAddress " + pairAddress.toHexString());
       configs.setCollateralFactorByPair(pairAddress.toHexString(), collateralFactor.toI64());
     }
   }
