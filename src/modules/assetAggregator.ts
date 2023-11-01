@@ -36,23 +36,23 @@ export function calculateTotalValue(configs: Configs): BigInt {
 }
 
 export function calculateTotalPrincipal(configs: Configs): BigInt {
-    let totalPrincipal: BigInt = BigInt.zero();
-    for (let i = 0; i < configs.principals.length - 1; i++) {
-      const price = BigInt.from(configs.prices[i]);
-      const principal = BigInt.from(configs.principals[i]).times(BALANCE_PRINCIPAL_DECIMAL);
-      const decimal = configs.decimals[i];
-      if(decimal > 10){
-        const principalAfterDecimal = principal.div(10**(decimal - 10)).toI64();
-        const amounte10 = BigInt.from(principalAfterDecimal).times(price).div(PRICE_DECIMAL).toI64();
-        const amounte5 = BigInt.from(amounte10).div(10**5).toI64();
-        const amount = BigInt.from(amounte5).div(10**5).toI64();
-        totalPrincipal = totalPrincipal.add(amount);
-      } else {
-        const principalAfterDecimal = principal.div(10**decimal).toI64();
-        const amount = BigInt.from(principalAfterDecimal).times(price).div(PRICE_DECIMAL);
-        totalPrincipal = totalPrincipal.add(amount);
-      }
+  let totalPrincipal: BigInt = BigInt.zero();
+  for (let i = 0; i < configs.principals.length - 1; i++) {
+    const price = BigInt.from(configs.prices[i]);
+    const principal = BigInt.from(configs.principals[i]).times(BALANCE_PRINCIPAL_DECIMAL);
+    const decimal = configs.decimals[i];
+    if(decimal > 10){
+      const principalAfterDecimal = principal.div(10**(decimal - 10)).toI64();
+      const amounte10 = BigInt.from(principalAfterDecimal).times(price).div(PRICE_DECIMAL).toI64();
+      const amounte5 = BigInt.from(amounte10).div(10**5).toI64();
+      const amount = BigInt.from(amounte5).div(10**5).toI64();
+      totalPrincipal = totalPrincipal.add(amount);
+    } else {
+      const principalAfterDecimal = principal.div(10**decimal).toI64();
+      const amount = BigInt.from(principalAfterDecimal).times(price).div(PRICE_DECIMAL);
+      totalPrincipal = totalPrincipal.add(amount);
     }
-    return totalPrincipal;
   }
+  return totalPrincipal;
+}
   

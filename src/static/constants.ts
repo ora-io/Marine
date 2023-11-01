@@ -1,6 +1,5 @@
 import { BigInt } from "@hyperoracle/zkgraph-lib";
 
-export const CLOSE_FACTOR = BigInt.fromI64(500000000000000000);
 export const COLLATERAL_FACTOR = BigInt.fromI64(900000000000000000);
 export const ONE_FACTOR = BigInt.fromI64(1000000000000000000);
 export const PRICE_DECIMAL = BigInt.fromI32(100);

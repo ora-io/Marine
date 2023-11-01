@@ -1,8 +1,5 @@
 import { Address, BigInt, Bytes, Event } from "@hyperoracle/zkgraph-lib";
 import {
-  BORROW_ESIG,
-  REDEEM_ESIG,
-  REPAY_BORROW_ESIG,
   MINT_ESIG_U32,
   REDEEM_ESIG_U32,
   BORROW_ESIG_U32,
@@ -13,6 +10,9 @@ import { Mint } from "../events/mint";
 import { Redeem } from "../events/redeem";
 import { Borrow } from "../events/borrow";
 import { RepayBorrow } from "../events/repayBorrow";
+import { NewCloseFactor } from "../events/newCloseFactor";
+import { NewCollateralFactor } from "../events/newCollateralFactor";
+import { COLLATERAL_FACTOR, NEW_CLOSE_FACTOR_ESIG, NEW_COLLATERAL_FACTOR_ESIG } from "../static/constants";
 
 export function updateConfigWithEvent(configs: Configs, events: Event[]): void {
   for (let i = 0; i <= events.length - 1; i++) {
@@ -52,6 +52,30 @@ export function updateConfigWithEvent(configs: Configs, events: Event[]): void {
           configs.setBalanceByMarket(cTokenAddress, newPrincipal);
         }
         break;
+    }
+  }
+}
+
+export function updateCloseFactor(configs: Configs, events: Event[]): void {
+  let closeFactor: BigInt;
+  for (let i = 0; i <= events.length - 1; i++) {
+    if (events[i].esig == Bytes.fromHexString(NEW_CLOSE_FACTOR_ESIG)) {
+      const newCloseFactor = NewCloseFactor.fromEvent(events[i]);
+      closeFactor = newCloseFactor.newCloseFactorMantissa;
+      configs.closeFactor = closeFactor.toI64();
+    }
+  }
+}
+
+export function updateCollateralFactor(configs: Configs, events: Event[]): void {
+  let collateralFactor = COLLATERAL_FACTOR;
+  for (let i = 0; i <= events.length - 1; i++) {
+    if (events[i].esig == Bytes.fromHexString(NEW_COLLATERAL_FACTOR_ESIG)) {
+      const newCollateralFactor = NewCollateralFactor.fromEvent(events[i]);
+      collateralFactor = newCollateralFactor.newCollateralFactorMantissa;
+      const pairAddress = events[i].address;
+      // console.log("pairAddress " + pairAddress.toHexString());
+      configs.setCollateralFactorByPair(pairAddress.toHexString(), collateralFactor.toI64());
     }
   }
 }
