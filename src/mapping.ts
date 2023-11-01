@@ -9,6 +9,7 @@ import {
 } from "./modules/configUpdater";
 import { updateCloseFactor, updateCollateralFactor } from "./modules/factorUpdater";
 import { calculateTotalValue, calculateTotalPrincipal, updatePrices } from "./modules/assetAggregator";
+import { Result } from "./types/result";
 
 /**
  * The idea of Compound Liquidator Automation is to monitor three types of events, 
@@ -39,6 +40,6 @@ export function handleEvents(events: Event[]): Bytes {
   // console.log("total principal: " + totalPrincipal.toString() + "U");
 
   // // step4: return totalValue <= totalPrincipal
-  const shouldBeLiquidated = totalValue < totalPrincipal ? 1 : 0;
-  return Bytes.fromI32(shouldBeLiquidated);
+  const shouldBeLiquidated = totalValue < totalPrincipal;
+  return new Result(shouldBeLiquidated, configs.userAddress).toBytes();
 }

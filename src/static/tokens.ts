@@ -1,9 +1,9 @@
 import { BigInt } from "@hyperoracle/zkgraph-lib";
-import { balances, principals } from "./marine";
+import { balances, principals, address } from "./marine";
 import { prices } from "./price";
 
 export class Configs {
-  public userAddress: string = "";
+  public userAddress: string = address;
   // List of Compound cTokens
   public marketAddresses: string[] = [
     "0x70e36f6BF80a52b3B46b3aF8e106CC0ed743E8e4", // cCOMP
