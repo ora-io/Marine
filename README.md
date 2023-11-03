@@ -46,21 +46,3 @@ You can modify the address `0x77C6d4c010EaeF7C0dC0080F78ded522AB58A926` and bloc
 2. If there is a Sync event, update the underlying prices hardcoded in the configs. If there is `Mint`/`Redeem`/`Borrow`/`RepayBorrow`, update the hardcoded compound user state. The hard-coded files for underlying prices and compound user status are respectively `src/static/price.ts` and `src/static/marine.ts`. The core file that records the state, `src/static/tokens`, will reference them.
 3. Calculate the user's totalCollateralValue and totalPrincipalValue by assetAggregator. The calculation of totalCollateralValue needs to take into account the cToken.collateralFactor and its corresponding exchangeRate.
 4. Compare `totalValue` and `totalPrincipal`, if `totalPrincipal` is larger, then the user can be liquidated.
-
-# Development roadmap
-
-1. The current underlying and compound user states are implemented with hard coding. This part of the logic will be rewritten using zkgraph state proof soon.
-
-2. Refactor configUpdater and factorUpdater, the two can be merged. The `comptroller.closeFactor` remains constant in the long term and can be implemented by hard coding it as a constant.
-
-3. Refactor static/tokens: The table lookup operation is changed to be implemented through a dictionary, making the code structure more elegant.
-
-4. The current hard-coded exchange rate needs to be more accurate. 
-
-5. There are precision issues in the calculations of balances and principals, and the usage of BigInt needs to be improved.
-
-6. modify `configs` into `positions`
-
-7. src/static Decoupling
-
-8. developer scripts merge into main branch

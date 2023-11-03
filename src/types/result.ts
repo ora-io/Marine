@@ -9,8 +9,8 @@ export class Result {
   }
 
   public toBytes(): Bytes {
-    // function operate(bool isLiquidatable, address compoundUser) public {}
-    let result: Bytes = Bytes.fromHexString("0x7b575b33");
+    // function operate(address compound,bytes payload) public {}
+    let result: Bytes = Bytes.fromHexString("0x53ad370d");
     const isLiquiadtableInt = this.isLiquidatable ? 1 : 0;
     const isLiquidatableBytes = Bytes.fromI32(isLiquiadtableInt);
     result = Bytes.fromByteArray(result.concat(isLiquidatableBytes));
