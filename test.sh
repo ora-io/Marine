@@ -1,4 +1,4 @@
-# Test script for zkCompound
+# Test script for Marine
 
 # Update `config.js` with your own parameters first!
 # Then run `sh test.sh`

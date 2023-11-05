@@ -1,5 +1,5 @@
 specVersion: 0.0.1
-name: zkCompound
+name: Marine
 description: "Compound Asset Watcher"
 repository: https://github.com/hyperoracle/zkgraph
 dataSources:
