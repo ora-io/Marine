@@ -1,9 +1,9 @@
-# zkCompound
+# Marine
 
 This is a zkgraph used to determine whether any compound user can be liquidated. It is built using [HyperOracle](https://www.hyperoracle.io), a programmable zkOracle protocol.
 
 # Getting Start
-Through the following steps, locally test zkCompound.
+Through the following steps, locally test Marine.
 
 ### 1. Prepare environment
 ```sh
@@ -35,12 +35,12 @@ You can modify the address `0x77C6d4c010EaeF7C0dC0080F78ded522AB58A926` and bloc
 
 # Project Layout
 
-### zkCompound project is broken down into three sections:
-- src - The core logic of zkCompound.
+### Marine project is broken down into three sections:
+- src - The core logic of Marine.
 - builds - Compiled WASM Binary file and compound user state file
 - APIs - Some zkgraph-api and scripts for obtaining hard-coded users and underlying status.
 
-### core logic of zkCompound
+### core logic of Marine
 
 1. Fetch events on the Compound Market chain. Instantiate the events in receipts into corresponding EventClass.
 2. If there is a Sync event, update the underlying prices hardcoded in the configs. If there is `Mint`/`Redeem`/`Borrow`/`RepayBorrow`, update the hardcoded compound user state. The hard-coded files for underlying prices and compound user status are respectively `src/static/price.ts` and `src/static/marine.ts`. The core file that records the state, `src/static/tokens`, will reference them.
