@@ -1,48 +1,51 @@
-# Marine
+# 🐳 [Marine](https://mirror.xyz/hyperoracleblog.eth/iXLTbbggNTtLWqPB695IvJQo2DtgooEbvYVVuFVY6y8): Compound Protocol Liquidation Keeper
 
-This is a zkgraph used to determine whether any compound user can be liquidated. It is built using [HyperOracle](https://www.hyperoracle.io), a programmable zkOracle protocol.
+A zkGraph for determining whether any Compound account can be liquidated and then performing liquidation as keeper. 
+
+Built using [HyperOracle](https://www.hyperoracle.io), a programmable zkOracle protocol.
 
 # Getting Start
-Through the following steps, locally test Marine.
 
-### 1. Prepare environment
+Test Marine locally by these steps.
+
+### 1. Set up environment
+
 ```sh
 npm install
 vim config.js # Fill in the private key and endpoint in the configuration file.
 ```
 
-### 2. Obtain the status of the compound account to be monitored.
+### 2. Access the status of monitored Compound account
 
 ```sh
 npm run marine -- 0x77C6d4c010EaeF7C0dC0080F78ded522AB58A926
 ```
 
-### 3. Obtain the price of underlyings.
+### 3. Obtain the price of underlying assets
 
 ```sh
 npm run prices
 ```
 
-### 4. Compile && Run at the specified block height.
+### 4. Compile && Run with specified block height
 
 ```sh
 npm run compile-local && npm run exec-local -- 18370576
 ```
 
-At this point, zkgraph returns a boolean value indicating whether the user can be liquidated.
+Then zkGraph returns a boolean value right after `0x53ad370d` in the result to indicate whether the user can be liquidated. In production, the return value will be the payload / calldata for triggering liquidation onchain.
 
-You can modify the address `0x77C6d4c010EaeF7C0dC0080F78ded522AB58A926` and block height `18370576` in the above command to any value for further testing.
+# Technical Details
 
-# Project Layout
+### Project Layout
 
-### Marine project is broken down into three sections:
-- src - The core logic of Marine.
-- builds - Compiled WASM Binary file and compound user state file
-- APIs - Some zkgraph-api and scripts for obtaining hard-coded users and underlying status.
+- src - Core logic of Marine.
+- builds - Compiled WASM Binary file and Compound user state file
+- APIs - Libraries including zkgraph-api and other scripts for obtaining user accounts and underlying status.
 
-### core logic of Marine
+### Core logic
 
-1. Fetch events on the Compound Market chain. Instantiate the events in receipts into corresponding EventClass.
-2. If there is a Sync event, update the underlying prices hardcoded in the configs. If there is `Mint`/`Redeem`/`Borrow`/`RepayBorrow`, update the hardcoded compound user state. The hard-coded files for underlying prices and compound user status are respectively `src/static/price.ts` and `src/static/marine.ts`. The core file that records the state, `src/static/tokens`, will reference them.
-3. Calculate the user's totalCollateralValue and totalPrincipalValue by assetAggregator. The calculation of totalCollateralValue needs to take into account the cToken.collateralFactor and its corresponding exchangeRate.
+1. Fetch events from Compound Protocol. Instantiate the events in receipts into corresponding EventClass.
+2. If there is a Sync event, update the underlying asset prices specified in the configs. If there is `Mint`/`Redeem`/`Borrow`/`RepayBorrow`, update the defined Compound user state. The files for underlying prices and Compound user status are respectively `src/static/price.ts` and `src/static/marine.ts`. The core file that tracks the state, `src/static/tokens`, will reference them.
+3. Calculate the user's `totalCollateralValue` and `totalPrincipalValue` by `assetAggregator`. The computation of `totalCollateralValue` needs to take into account the `cToken.collateralFactor` and its corresponding exchangeRate.
 4. Compare `totalValue` and `totalPrincipal`, if `totalPrincipal` is larger, then the user can be liquidated.
